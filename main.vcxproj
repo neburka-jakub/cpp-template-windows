@@ -1,0 +1,39 @@
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.default.props" />
+  <PropertyGroup>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WarningLevel>Level4</WarningLevel>
+      <!--<TreatWarningAsError>true</TreatWarningAsError>-->
+      <AdditionalOptions>/std:c++20</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <Target Name="Test" DependsOnTargets="Build">
+    <Exec Command="$(Configuration)\%(ClCompile.Filename).exe &lt;input.txt &gt;output.txt"/>
+    <Exec Command="powershell -File .\test.ps1 1&gt;&amp;2" LogStandardErrorAsError="true"/>
+  </Target>
+
+  <Target Name="CleanAll">
+    <RemoveDir Directories="$(Configuration)" />
+    <Delete Files="output.txt" />
+  </Target>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Targets" />
+</Project>

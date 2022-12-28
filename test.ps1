@@ -1,0 +1,1 @@
+Compare-Object -ReferenceObject (Get-Content -Path  expected.txt) -DifferenceObject (Get-Content -Path output.txt)
