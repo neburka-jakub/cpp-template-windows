@@ -6,7 +6,7 @@ The project can be build with MSBuild and debugged in Visual Studio Code.
 
 ## Prerequisities
 - Windows OS.
-- Visual Studio with MSBuild and MSVC build tools installed.
+- Visual Studio with MSBuild and MSVC build tools installed. (`msbuild.exe` should be in PATH)
 - Visual Studio Code installed.
 
 ## How to use it.

@@ -27,7 +27,7 @@
 
   <Target Name="Test" DependsOnTargets="Build">
     <Exec Command="$(Configuration)\%(ClCompile.Filename).exe &lt;input.txt &gt;output.txt"/>
-    <Exec Command="powershell -File .\test.ps1 1&gt;&amp;2" LogStandardErrorAsError="true"/>
+    <Exec Command="powershell -ExecutionPolicy Bypass -File .\test.ps1 1&gt;&amp;2" LogStandardErrorAsError="true"/>
   </Target>
 
   <Target Name="CleanAll">
